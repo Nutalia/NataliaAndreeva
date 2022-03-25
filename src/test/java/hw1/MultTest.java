@@ -1,12 +1,10 @@
 package hw1;
 
-import com.epam.tat.module4.Calculator;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class MultTest {
-    Calculator calculator = new Calculator();
+public class MultTest extends OperationsTest{
 
     @DataProvider(name = "multData")
     public Object[][] createMultData() {

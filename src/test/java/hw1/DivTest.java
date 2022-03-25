@@ -1,12 +1,10 @@
 package hw1;
 
-import com.epam.tat.module4.Calculator;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class DivTest {
-    Calculator calculator = new Calculator();
+public class DivTest extends OperationsTest{
 
     @DataProvider(name = "divData")
     public Object[][] createDivData() {
@@ -19,7 +17,7 @@ public class DivTest {
 
     @Test(dataProvider = "divData")
     public void divTest(double dividend, double divider, double expected) {
-        double actual = this.calculator.div(dividend, divider);
+        double actual = calculator.div(dividend, divider);
         Assert.assertEquals(actual, expected);
     }
 }

@@ -1,12 +1,10 @@
 package hw1;
 
-import com.epam.tat.module4.Calculator;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class SubTest {
-    Calculator calculator = new Calculator();
+public class SubTest extends OperationsTest{
 
     @DataProvider(name = "subData")
     public Object[][] createSubData() {

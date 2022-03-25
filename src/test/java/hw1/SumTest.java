@@ -1,13 +1,10 @@
 package hw1;
 
-import com.epam.tat.module4.Calculator;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class SumTest {
-
-    Calculator calculator = new Calculator();
+public class SumTest extends OperationsTest{
 
     @DataProvider(name = "sumData")
     public Object[][] createLongData() {
@@ -23,5 +20,4 @@ public class SumTest {
         double actual = calculator.sum(operand1, operand2);
         Assert.assertEquals(actual, expected);
     }
-
 }
