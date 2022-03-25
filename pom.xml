@@ -9,8 +9,9 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <java.version>11</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -20,6 +21,54 @@
             <version>7.4.0</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.epam.tat.module4</groupId>
+            <artifactId>calculator</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/calculator-1.0.jar</systemPath>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.4</version>
+                <configuration>
+                    <suiteXmlFiles>${testng.suite.file}</suiteXmlFiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>SUMandSUB</id>
+            <properties>
+                <testng.suite.file>${project.build.testOutputDirectory}/SUMandSUB.xml</testng.suite.file>
+            </properties>
+
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+
+        <profile>
+            <id>MULTandDIV</id>
+            <properties>
+                <testng.suite.file>${project.build.testOutputDirectory}/MULTandDIV.xml</testng.suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>All</id>
+            <properties>
+                <testng.suite.file>${project.build.testOutputDirectory}/All.xml</testng.suite.file>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>
