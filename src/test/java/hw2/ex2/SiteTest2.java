@@ -11,6 +11,10 @@ public class SiteTest2 extends BrowserTest {
 
     @Test
     public void testSitePage() {
+
+        //1-4. User Authorization
+        authorization(new User("ROMAN IOVLEV", "Roman", "Jdi1234"));
+
         //5. Open through the header menu Service -> Different Elements Page
         WebElement service = driver.findElement(By.cssSelector("header .nav .dropdown"));
         service.click();
@@ -21,7 +25,7 @@ public class SiteTest2 extends BrowserTest {
         List<WebElement> checkBoxes = driver.findElements(By.cssSelector("label.label-checkbox"));
         checkBoxes.removeIf(x -> !x.getText().equals("Water") && !x.getText().equals("Wind"));
         softAssert.assertEquals(checkBoxes.size(), 2);
-        for(WebElement box: checkBoxes) {
+        for (WebElement box : checkBoxes) {
             box.findElement(By.tagName("input")).click();
         }
 
@@ -29,7 +33,7 @@ public class SiteTest2 extends BrowserTest {
         List<WebElement> radios = driver.findElements(By.cssSelector("label.label-radio"));
         radios.removeIf(x -> !x.getText().equals("Selen"));
         softAssert.assertEquals(radios.size(), 1);
-        for(WebElement button: radios) {
+        for (WebElement button : radios) {
             button.findElement(By.tagName("input")).click();
         }
 
@@ -39,13 +43,13 @@ public class SiteTest2 extends BrowserTest {
 
         //9. Assertions
         String[] expectedLogs = {"Colors: value changed to Yellow",
-                                 "metal: value changed to Selen",
-                                 "Wind: condition changed to true",
-                                 "Water: condition changed to true"
-                                 };
+                "metal: value changed to Selen",
+                "Wind: condition changed to true",
+                "Water: condition changed to true"
+        };
         List<WebElement> log = driver.findElements(By.cssSelector(".info-panel-body-log li"));
         softAssert.assertEquals(log.size(), expectedLogs.length);
-        for(int i = 0; i < log.size() && i < expectedLogs.length; i++) {
+        for (int i = 0; i < log.size() && i < expectedLogs.length; i++) {
             WebElement current = log.get(i);
             softAssert.assertTrue(current.isDisplayed());
             softAssert.assertTrue(current.getText().contains(expectedLogs[i]));
