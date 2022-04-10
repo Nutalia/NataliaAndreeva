@@ -14,18 +14,6 @@ public class BrowserTest {
     protected SoftAssert softAssert;
     protected String homeUrl;
 
-    public static class User {
-        private String name;
-        private String login;
-        private String password;
-
-        public User(String name, String login, String password) {
-            this.name = name;
-            this.login = login;
-            this.password = password;
-        }
-    }
-
     @BeforeSuite
     public void initSystem() {
         String path = "src/main/resources/chromedriver.exe";
@@ -50,19 +38,19 @@ public class BrowserTest {
 
         //3. Perform login
         driver.findElement(By.cssSelector(".uui-profile-menu .dropdown-toggle")).click();
-        driver.findElement(By.id("name")).sendKeys(user.login);
-        driver.findElement(By.id("password")).sendKeys(user.password);
+        driver.findElement(By.id("name")).sendKeys(user.getLogin());
+        driver.findElement(By.id("password")).sendKeys(user.getPassword());
         driver.findElement(By.id("login-button")).click();
 
         //4. Assert Username is loggined
         WebElement userName = driver.findElement(By.id("user-name"));
         softAssert.assertTrue(userName.isDisplayed());
-        softAssert.assertEquals(userName.getText(), user.name);
+        softAssert.assertEquals(userName.getText(), user.getName());
     }
 
-    @AfterMethod
     //ex.1 12. Close Browser
     //ex.2 10. Close Browser
+    @AfterMethod
     public void closeBrowser() {
         driver.quit();
     }

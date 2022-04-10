@@ -1,6 +1,7 @@
 package hw2.ex2;
 
 import hw2.BrowserTest;
+import hw2.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
