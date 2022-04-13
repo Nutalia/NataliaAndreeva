@@ -82,6 +82,13 @@
                 <testng.suite.file>${project.build.testOutputDirectory}/HW2.xml</testng.suite.file>
             </properties>
         </profile>
+
+        <profile>
+            <id>HW3</id>
+            <properties>
+                <testng.suite.file>${project.build.testOutputDirectory}/HW3.xml</testng.suite.file>
+            </properties>
+        </profile>
     </profiles>
 
 </project>
