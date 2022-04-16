@@ -1,6 +1,7 @@
 package hw3.ex1;
 
 import hw3.PageObjectsBaseTest;
+import hw3.UserData;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
@@ -11,7 +12,10 @@ public class PageObjectsTest1 extends PageObjectsBaseTest {
     @Test
     public void testSitePage() {
         //1-4. User Authorization
-        authorization();
+        authorization(new UserData(properties.getProperty("userName"),
+                        properties.getProperty("login"),
+                        properties.getProperty("password")),
+                properties.getProperty("title"));
 
         //5. Assert that there are 4 items on the header section are displayed and they have proper texts
         String[] expectedItemText = {"HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS"};

@@ -1,6 +1,7 @@
 package hw3.ex2;
 
-import hw3.DifferentElements;
+import hw3.UserData;
+import hw3.pages.DifferentElements;
 import hw3.PageObjectsBaseTest;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
@@ -10,7 +11,10 @@ public class PageObjectsTest2 extends PageObjectsBaseTest {
     @Test
     public void testSitePage() {
         //1-4. User Authorization
-        authorization();
+        authorization(new UserData(properties.getProperty("userName"),
+                        properties.getProperty("login"),
+                        properties.getProperty("password")),
+                properties.getProperty("title"));
 
         //5. Open through the header menu Service -> Different Elements Page
         homePage.getHeaderMenu().getSubitemByText("SERVICE", "DIFFERENT ELEMENTS").click();

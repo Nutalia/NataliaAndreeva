@@ -1,4 +1,4 @@
-package hw3;
+package hw3.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -1,5 +1,8 @@
-package hw3;
+package hw3.pages;
 
+import hw3.elements.HeaderMenu;
+import hw3.elements.LeftMenu;
+import hw3.elements.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

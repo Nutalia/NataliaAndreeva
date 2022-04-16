@@ -1,5 +1,7 @@
 package hw3;
 
+import hw3.elements.User;
+import hw3.pages.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -16,7 +18,7 @@ public class PageObjectsBaseTest {
     protected String homeUrl;
     protected SoftAssert softAssert;
     protected HomePage homePage;
-    protected Properties userData;
+    protected Properties properties;
 
     @BeforeSuite
     public void initSystem() {
@@ -32,28 +34,28 @@ public class PageObjectsBaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         softAssert = new SoftAssert();
         homePage = new HomePage(driver);
-        userData = new Properties();
+        properties = new Properties();
         try {
-            userData.load(new FileReader("src/test/resources/data.properties"));
+            properties.load(new FileReader("src/test/resources/data.properties"));
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
-    public void authorization() {
+    public void authorization(UserData userData, String expTitle) {
         //1. Open test site by URL
         driver.get(homeUrl);
 
         //2. Assert Browser title
-        softAssert.assertEquals(driver.getTitle(), userData.getProperty("title"));
+        softAssert.assertEquals(driver.getTitle(), expTitle);
 
         //3. Perform login
         User user = homePage.getUser();
-        user.authorization(userData.getProperty("login"), userData.getProperty("password"));
+        user.authorization(userData.getLogin(), userData.getPassword());
 
         //4. Assert Username is loggined
-        softAssert.assertEquals(user.getUserName(), userData.getProperty("userName"));
+        softAssert.assertEquals(user.getUserName(), userData.getName());
     }
 
     //ex.1 12. Close Browser
