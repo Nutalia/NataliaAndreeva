@@ -2,7 +2,6 @@ package hw4.steps;
 
 import hw3.pages.DifferentElements;
 import hw3.pages.HomePage;
-import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 
 public class BaseStep {

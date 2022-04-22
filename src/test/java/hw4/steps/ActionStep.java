@@ -2,11 +2,9 @@ package hw4.steps;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-import java.util.List;
 
-public class ActionStep extends BaseStep{
+public class ActionStep extends BaseStep {
 
     public ActionStep(WebDriver driver) {
         super(driver);
